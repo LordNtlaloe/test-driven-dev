@@ -1,14 +1,13 @@
-import Enzyme, { shallow } from 'enzyme'
-import  EnzymeAdapter from '@cfaester/enzyme-adapter-react-18';
-import App from './App';
+import React from 'react'
+import '@testing-library/jest-dom'
+import {render, screen} from '@testing-library/react'
+import TodoList from './components/TodoList'
+import mockData from './mockData'
 
-Enzyme.configure({adapter: new EnzymeAdapter()})
+describe('todo list test', () => {
+  it('should show title of todos', () => {
+    render(<TodoList todos={mockData} />)
+    mockData.forEach((d) => expect(screen.getByText(d.title)).toBeInTheDocument())
+  })
+})
 
-test('Renders No-Empty Component Without Crashing', () => {
-  const wrapper = shallow(<App />)
-  // Debugging
-  // console.log(wrapper.debug())
-
-  // Assertions
-  expect(wrapper.exists()).toBe(true)
-});
