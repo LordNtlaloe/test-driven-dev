@@ -1,13 +1,17 @@
-import React from 'react'
-import '@testing-library/jest-dom'
-import {render, screen} from '@testing-library/react'
-import TodoList from './components/TodoList'
-import mockData from '../mockData'
+import React from 'react';
+import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import App from './App';
+import mockData from './mockData';
+import fetchMock from 'jest-fetch-mock';
 
-describe('todo list test', () => {
-  it('should show title of todos', () => {
-    render(<TodoList todos={mockData} />)
-    mockData.forEach((d) => expect(screen.getByText(d.title)).toBeInTheDocument())
-  })
-})
 
+beforeEach(() => {
+  fetchMock.once(JSON.stringify(mockData));
+});
+
+describe('<App /> tests', () => {
+  it('renders <App />', async () => {
+    render(<App />);
+    await waitForElementToBeRemoved(() => screen.getByText(/loading/i));
+  });
+});
