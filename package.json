@@ -41,8 +41,5 @@
     "jest": "^27.5.1",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "jest-fetch-mock": "^3.0.3"
-  },
-  "jest": {
-    "setUpFiles": ["./jest.setup.js"]
   }
 }

@@ -1,9 +1,10 @@
 import React from 'react'
+import TodoItem from '../TodoItem/TodoItem'
 
 export default function TodoList({todos}) {
   return (
     <div>{todos.map((todo, index) => (
-        <div key={index}>{todo.title}</div>
+        <TodoItem key={index} todo={todo} />
     ))}</div>
   )
 }

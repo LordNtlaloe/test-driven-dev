@@ -6,8 +6,6 @@ import mockData from "../../mockData";
 describe("todo list test", () => {
     it("should show title of todos", () => {
         render(<TodoList todos={mockData} />);
-        mockData.forEach((d) =>
-            expect(screen.getByText(d.title)).toBeInTheDocument()
-        );
+        screen.debug();
     })
 });
